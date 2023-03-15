@@ -11,3 +11,4 @@ class FireDice(Dice):
     def __init__(self) -> None:
         self.__init__()
         self.attack_dmg = 5
+        self.color = "red"

@@ -1,6 +1,6 @@
 BACKGROUND_COLOR = "white"
 
-HEIGHT = 600
+HEIGHT = 800
 WIDTH = 600
 
 # Fire dice stats

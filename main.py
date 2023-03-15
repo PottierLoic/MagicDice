@@ -5,36 +5,45 @@ Creation date: 15/03/2023
 """
 
 # Basic libraries
-import random
 from tkinter import *
+from PIL import ImageTk, Image
 
 # File imports
 from constants import *
-from board import Board
+from game import Game
 
 def draw():
     canvas.delete("all")
-    for i in range(len(b.board)):
-        for j in range(len(b.board[i])):
-            if b.board[i][j] == 0:
+    # Draw bakcground
+    canvas.create_image(0, 0, anchor=NW, image=backgroundImg)
+    # Draw bottom board
+    for i in range(len(g.board1.board)):
+        for j in range(len(g.board1.board[i])):
+            if g.board1.board[i][j] == 0:
                 pass
             else:
-                canvas.create_rectangle(i*WIDTH/5, j*HEIGHT/3, (i+1)*WIDTH/5, (j+1)*HEIGHT/3, fill="red")
-
-
-
+                canvas.create_rectangle(200 + int(j*300/5), 500 + int(i*200/3), 200 + int((j+1)*300/5), 500 + int((i+1)*200/3), fill=g.board1.board[i][j].color)
+                canvas.create_text(200 + int((j+0.5)*300/5), 500 + int((i+0.5)*200/3), text=g.board1.board[i][j].dot, font=("Arial", 20), fill="white")
+    
 def frame():
     draw()
     window.after(1, frame)
 
-window = Tk()
-window.title("Magic Dice")
-canvas = Canvas(window, bg=BACKGROUND_COLOR, height=HEIGHT, width=WIDTH)
-canvas.pack()
-window.update()
+if __name__ == "__main__":
+    g = Game()
 
-b = Board()
+    window = Tk()
+    window.title("Magic Dice")
+    canvas = Canvas(window, bg=BACKGROUND_COLOR, height=HEIGHT, width=WIDTH)
+    canvas.pack()
+    window.update()
 
-frame()
+    # Images
+    backgroundImg = ImageTk.PhotoImage(Image.open("img/background.png"))
+ 
+    # keybinds
+    window.bind("<space>", lambda event: g.board1.addDice())
 
-window.mainloop()
+    frame()
+
+    window.mainloop()
