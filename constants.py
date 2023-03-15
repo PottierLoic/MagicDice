@@ -1,0 +1,7 @@
+BACKGROUND_COLOR = "white"
+
+HEIGHT = 600
+WIDTH = 600
+
+# Fire dice stats
+FIRE_DICE_ATCK_DMG = 5
