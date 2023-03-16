@@ -1,23 +1,23 @@
 """
-Board class
+Player class
 """
 
 # Basic libraries
 import random
 
 # File imports
-from dices.fire_dice import FireDice
+from dice import *
 
-class Board:
+class Player:
     def __init__(self) -> None:
         self.board = [[0, 0, 0, 0, 0], 
                       [0, 0, 0, 0, 0], 
                       [0, 0, 0, 0, 0]]
-        self.deck = [FireDice, FireDice, FireDice, FireDice, FireDice]
+        self.deck = [FireDice for i in range(5)]
         self.gold = 100
         self.cost = 10
 
-    # Add dice to board on a random open spot
+    # Add dice to the board on a random open spot
     def addDice(self):
         if self.gold > self.cost:
             open = []

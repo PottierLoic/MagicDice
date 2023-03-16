@@ -17,13 +17,13 @@ def draw():
     # Draw bakcground
     canvas.create_image(0, 0, anchor=NW, image=backgroundImg)
     # Draw bottom board
-    for i in range(len(g.board1.board)):
-        for j in range(len(g.board1.board[i])):
-            if g.board1.board[i][j] == 0:
+    for i in range(len(g.player1.board)):
+        for j in range(len(g.player1.board[i])):
+            if g.player1.board[i][j] == 0:
                 pass
             else:
-                canvas.create_rectangle(200 + int(j*300/5), 500 + int(i*200/3), 200 + int((j+1)*300/5), 500 + int((i+1)*200/3), fill=g.board1.board[i][j].color)
-                canvas.create_text(200 + int((j+0.5)*300/5), 500 + int((i+0.5)*200/3), text=g.board1.board[i][j].dot, font=("Arial", 20), fill="white")
+                canvas.create_rectangle(200 + int(j*300/5), 500 + int(i*200/3), 200 + int((j+1)*300/5), 500 + int((i+1)*200/3), fill=g.player1.board[i][j].color)
+                canvas.create_text(200 + int((j+0.5)*300/5), 500 + int((i+0.5)*200/3), text=g.player1.board[i][j].dot, font=("Arial", 20), fill="white")
     
 def frame():
     draw()
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     backgroundImg = ImageTk.PhotoImage(Image.open("img/background.png"))
  
     # keybinds
-    window.bind("<space>", lambda event: g.board1.addDice())
+    window.bind("<space>", lambda event: g.player1.addDice())
 
     frame()
 

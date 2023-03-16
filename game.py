@@ -2,12 +2,12 @@
 Game class
 """
 
-from board import Board
+from player import Player
 
 class Game:
     def __init__(self):
-        self.board1 = Board()
-        self.board2 = Board()
+        self.player1 = Player()
+        self.player2 = Player()
         self.blocks = []
 
     def spawnBlock(self):

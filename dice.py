@@ -1,14 +1,17 @@
 """
-Fire dice class
+Dices class
 """
 
-# Basic libraries
-
-# File imports
-from dices.dice import Dice
+class Dice:
+    def __init__(self) -> None:
+        self.dot = 1
 
 class FireDice(Dice):
     def __init__(self) -> None:
         self.__init__()
+        self.type = "fire"
         self.attack_dmg = 5
         self.color = "red"
+
+
+    
