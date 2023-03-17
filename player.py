@@ -10,10 +10,10 @@ from dice import *
 
 class Player:
     def __init__(self) -> None:
-        self.board = [[0, 0, 0, 0, 0], 
-                      [0, 0, 0, 0, 0], 
-                      [0, 0, 0, 0, 0]]
-        self.deck = [FireDice for i in range(5)]
+        self.board = [[None, None, None, None, None], 
+                      [None, None, None, None, None], 
+                      [None, None, None, None, None]]
+        self.deck = ["FireDice" for i in range(5)]
         self.gold = 100
         self.cost = 10
 
@@ -23,12 +23,17 @@ class Player:
             open = []
             for i in range(3):
                 for j in range(5):
-                    if self.board[i][j] == 0:
+                    if self.board[i][j] == None:
                         open.append((i, j))
             if len(open) == 0:
                 return
             else:
                 rd = random.choice(open)
-                self.board[rd[0]][rd[1]] = random.choice(self.deck)
+                dice = random.choice(self.deck)
+                match dice:
+                    case "FireDice":
+                        self.board[rd[0]][rd[1]] = FireDice()
+                    case _:
+                        pass
                 self.gold -= self.cost
             
