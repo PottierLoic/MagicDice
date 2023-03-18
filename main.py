@@ -14,7 +14,7 @@ from game import Game
 
 def draw():
     canvas.delete("all")
-    # Draw bakcground
+    # Draw background
     canvas.create_image(0, 0, anchor=NW, image=backgroundImg)
     # Draw bottom board and its dices
     for i in range(len(g.player1.board)):
@@ -27,8 +27,15 @@ def draw():
     # draw blocks
     for block in g.blocks:
         canvas.create_rectangle(block.x - BLOCK_SIZE / 2, block.y - BLOCK_SIZE / 2, block.x + BLOCK_SIZE / 2, block.y + BLOCK_SIZE / 2, fill=block.color)
-    
-    
+    # draw projectiles
+    for i in range(len(g.player1.board)):
+        for j in range(len(g.player1.board[i])):
+            if g.player1.board[i][j] == None:
+                pass
+            else:
+                for projectile in g.player1.board[i][j].projectiles:
+                    canvas.create_oval(projectile[0] - PROJECTILE_SIZE / 2, projectile[1] - PROJECTILE_SIZE / 2, projectile[0] + PROJECTILE_SIZE / 2, projectile[1] + PROJECTILE_SIZE / 2, fill=g.player1.board[i][j].color)
+
 def frame():
     draw()
     g.update()

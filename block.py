@@ -19,6 +19,6 @@ class Block():
     def move(self):
         if (time.time()*1000 - self.movementTimer) > TIMER:
             if self.y >= 400:
-                self.y -= 1
+                self.y -= 0.5
             else:
-                self.x += 1
+                self.x += 0.5

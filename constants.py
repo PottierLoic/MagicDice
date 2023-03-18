@@ -11,8 +11,11 @@ BLOCK_SIZE = 35
 BLOCK_SPAWN_DELAY = 1000
 BLOCK_COLOR = "black"
 
-# Basic dice stats
-
 # Fire dice stats
 FIRE_DICE_ATCK_DMG = 5
 FIRE_DICE_COLOR = "red"
+FIRE_DICE_FIRE_RATE = 200
+
+# Projectile stats
+PROJECTILE_SIZE = 5
+BULLET_MOVE_DELAY = 1

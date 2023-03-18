@@ -9,7 +9,8 @@ import random
 from dice import *
 
 class Player:
-    def __init__(self) -> None:
+    def __init__(self, parent) -> None:
+        self.parent = parent
         self.board = [[None, None, None, None, None], 
                       [None, None, None, None, None], 
                       [None, None, None, None, None]]
@@ -32,7 +33,7 @@ class Player:
                 dice = random.choice(self.deck)
                 match dice:
                     case "FireDice":
-                        self.board[rd[0]][rd[1]] = FireDice()
+                        self.board[rd[0]][rd[1]] = FireDice(self, 200 + int((rd[1]+0.5)*300/5), 500 + int((rd[0]+0.5)*200/3))
                     case _:
                         pass
                 self.gold -= self.cost
